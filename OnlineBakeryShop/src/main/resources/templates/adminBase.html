@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" th:href="@{/CSS/nav.css}" />
+    <title></title>
+  </head>
+  <body>
+  <!-- Navigation Section -->
+    <nav>
+        <ul>
+           <li class="logo"><a th:href="@{/admin}">Bakery Shop</a></li>
+           <li class="items"><a href="#"><i class="far fa-user"></i> <span th:text="${'Hi, '+username}"></span></a></li>
+           <li class="items"><a th:href="@{/logout}">logout</a></li>
+          
+           <li class="btn"><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+     </nav>
+     
+     
+     <!-- Sidebar section -->
+     <div class="siderbar">
+        <div class="leftContainer">
+            <a th:href="@{/admin}"><i class="fas fa-chart-line" style="padding-right: 3px;"></i>Dashboard</a>
+            <a th:href="@{/admin/categories}">View Category</a>
+            <a th:href="@{/admin/categories/addCategory}">Add Category</a>
+            <a th:href="@{/admin/products}">View Products</a>
+            <a th:href="@{/admin/product/addProduct}">Add Product</a>
+            <a th:href="@{/admin/ingredient/0}">View Ingredient</a>
+            <a th:href="@{/admin/ingredients}">Add Ingredient</a>
+            <a th:href="@{/admin/orders/0}">Orders</a>
+        </div>
+      
+		<!-- main content section -->
+        <div class="rightContainer" th:replace="${content}">
+        
+        
+        
+        
+			
+			
+
+
+		</div>
+
+     </div>
+     
+
+
+
+     <script>
+        $(document).ready(function(){
+          $('.btn').click(function(){
+            $('.items').toggleClass("show");
+            $('ul li').toggleClass("hide");
+          });
+        });
+     </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

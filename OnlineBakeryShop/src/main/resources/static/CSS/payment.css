@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+
+section{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.pContainer{
+	margin:auto;
+	margin-bottom: 40px;
+	width: 1000px;
+	background: white;
+	border: 1px solid;
+	box-shadow: 10px 10px 5px #aaaaaa;
+}
+.pContainer .box{
+	padding:15px;
+	display: flex;
+	padding-bottom: 40px;
+}
+.title{
+	font-size: 24px;
+	font-weight: bold;
+	font-family: sans-serif;
+	padding-left: 20px;
+	text-decoration: underline;
+}
+.box .leftContainer{
+	width: 50%;
+}
+.box .rightContainer{
+	width: 50%;
+	
+}

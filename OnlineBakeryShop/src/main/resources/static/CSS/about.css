@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&family=Square+Peg&display=swap');
+
+body{
+	background-image:url("/image/aboutbackground.jpg");
+	background-size:cover;
+	background-repeat:no-repeat;
+	padding: 0px;
+	margin: 0px;
+}
+.title{
+	text-align: center;
+	font-family: 'Playfair Display', serif;
+	text-decoration: underline;
+	font-weight: 800;
+	font-size: 36px;
+	margin-top: 20px;
+	color: #2fa624;
+}
+.desc{
+	text-align: center;
+	margin-left: 10%;
+	margin-right: 10%;
+	color: white;
+}
+.main{
+	display: flex;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-top: 25px;
+	color: white;
+}
+.left img{
+	width: 300px;
+	height:300px;
+	border-radius: 50%;
+}
+.right{
+	padding-left: 30px;
+}
+.right img{
+	width: 300px;
+	height:300px;
+	border-radius: 50%;
+}

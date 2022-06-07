@@ -1,0 +1,42 @@
+@charset "ISO-8859-1";
+body{
+	padding: 0px;
+	margin: 0px;
+	
+}
+.mainContainer{
+	margin-left: 5%;
+	margin-right: 5%;
+	display: flex;
+	
+	
+}
+.mainContainer .leftContainer{
+	width: 65%;
+	background: #e3e8e5;
+	border: 1px solid black;
+	margin-top: 30px;
+}
+.title{
+	background: #14bbe0;
+	font-family: sans-serif;
+	font-size: 24px;
+	font-weight: bolder;
+	padding: 10px;
+	color: white;
+}
+.pCart{
+	margin-bottom: 15px;
+	display: flex;
+	padding-top: 10px;
+}
+.mainContainer .rightContainer{
+	background: black;
+	color: white;
+	width: 400px;
+	height: 500px;
+	margin-left: 60px;
+	margin-top: 30px;
+	padding-left: 10px;
+	border-radius: 15px;
+}

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" th:href="@{/CSS/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/CSS/cart.css}">
+    <link rel="stylesheet" th:href="@{/CSS/footer.css}">
+    <title>Cart</title>
+     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+  	<script th:src="@{/js/script.js}"></script>
+  	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+  <body>
+  
+  
+  
+  
+  
+  <!-- Navigation Bar -->
+	<nav>
+			<div class="logo"><img style="width: 100px;" th:src="@{/image/logo.png}" alt="" /></div>
+			<ul>
+				<li><a class="active" th:href="@{/bakeryshop}">Home</a></li>
+				<li><a th:href="@{/bakeryshop/shop}">Products</a></li>
+				<li><a th:href="@{/bakeryshop/ingredients/0}">Ingredients</a></li>
+				<li><a th:href="@{/bakeryshop/about}">About</a></li>
+				<li style="color: white;"><a th:href="@{/cart}"><i class="fa fa-shopping-cart" aria-hidden="true">(<span
+					th:text="${cartCount}" Style="color: white;">0</span>)</i></a></li>
+				<li style="color: white;"><i class="fa fa-user" aria-hidden="true"><span th:text="${username}"></span></i></li>
+				<li><a th:href="@{/logout}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+			</ul>
+		</nav>
+	
+	
+	
+	
+	
+	
+	
+	<!-- Cart box -->
+	<div class="mainContainer">
+		<div class="leftContainer">
+			<div class="title">
+				Your cart (<span th:text="${cartCount}"></span>)
+			</div>
+			<div class="pCart" th:each="c : ${carts}">
+			
+			<div style="padding-left: 20px; ">
+				<img style="width: 100px;border-radius: 5px;" th:src="@{'/image/' + ${c.productImage}}" alt="No-Image" />
+			</div>
+			<div style="padding-left: 15px;">
+				<span th:text="${c.name}" style="font-family: sans-serif; font-weight: bold;"></span><br />
+				<span th:text="${'Model : pd' +c.pId}"></span>
+			</div>
+			<div style="padding-left: 100px; color: red;">
+				<a th:href="@{'/Cart/remove/'+${c.pId}(pId=${c.pId})}" onclick="remove()"><i class="far fa-trash-alt"> remove</i></a>
+			</div>
+			<div style="padding-left: 200px;">
+				<span th:text="${'Rs.'+c.price}"></span>
+			</div>
+			</div>
+		</div>
+		
+		<div class="rightContainer">
+			<div style="text-align:center;"><img style="width: 100px;" th:src="@{/image/logo.png}" alt="" /></div>
+			<h2 style="text-align: center;">Amount</h2>
+			<h5 id="payment_amount">Total Price = <span  th:text="${total}"></span></h5>
+			<p>-------------------------------------------</p>
+			<div style="text-align: center;">
+			<!-- <button id="payment-button" onclick="payment()" type="submit" class="btn" style="background: #204066; color: white;">Pay with Khalti</button> --> 
+			
+			<a th:href="@{/order/CashOnDelivery}">
+			<button type="submit" class="btn" style="background: #e86a38; color: white;">Cash On Delivery</button>
+			</a>
+			<a>
+				<button id="payment-button" onclick="payment()" type="submit" class="btn" style="background: #204066; color: white;">Pay With Khalti</button>
+			</a>
+			
+		</div>
+	</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- Footer section -->
+	 <footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a th:href="@{/bakeryshop/about}">about us</a></li>
+  	 				<li><a th:href="@{/privacypolicy}">privacy policy</a></li>
+  	 				
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>Payment Method</h4>
+  	 			<ul>
+  	 				<li><a href="#">Cash On Delivery </a></li>
+  	 				<li><a href="#">Pay With Khalti </a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>online shop</h4>
+  	 			<ul>
+  	 				<li><a href="#">Birthday Cakes</a></li>
+  	 				<li><a href="#">Pastry</a></li>
+  	 				<li><a href="#">Cookies</a></li>
+  	 				<li><a href="#">Breads</a></li>
+  	 				<li><a href="#">Pizza</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>follow us</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
+	<script>
+		function remove(){
+			swal({
+				  title: "Are you sure?",
+				  text: "You want to remove this product.",
+				  icon: "warning",
+				  buttons: true,
+				  dangerMode: true,
+				})
+				.then((willDelete) => {
+				  if (willDelete) {
+				    swal("Product has been removed successfully", {
+				      icon: "success",
+				    });
+				  } else {
+				    swal("Product is not removed!");
+				  }
+				});
+		}
+	
+	</script>
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  
+  
+  <script>
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_bd3e1469cd4f4246b894d77d20fc51ad",
+            "productIdentity": "1234567890",
+            "productName": "Dragon",
+            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+            "paymentPreference": [
+                "KHALTI"
+                ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    let httpRequest = new XMLHttpRequest();
+					httpRequest.open("GET",'http://localhost:9090/khalti');
+					httpRequest.send();
+                    console.log(payload);
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            
+            checkout.show({amount: 1000});
+        }
+    </script>
+  
+  </body>
+</html>

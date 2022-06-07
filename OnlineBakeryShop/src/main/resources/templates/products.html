@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="adminBase::layout(~{::section})" >
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+  <nav>
+         <div class="logo">
+            Brand
+         </div>
+         
+         <label for="click" class="menu-btn">
+         <i class="fas fa-bars"></i>
+         </label>
+         <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li>
+            	<a href="">Cart</a>
+            	<span th:text="${cartCount}" Style="color: white;">0</span>
+            </li>
+         </ul>
+      </nav>
+      
+      
+      
+        <section style="width: 100%; ">
+        	<!-- Message -->
+        	<div th:if="${session.message}" style="width: 100%">
+        		<div th:classappend="${'alert-'+session.message.type}" role="alert" class="alert">
+        			<span th:text="${session.message.content}"></span>
+        		</div>
+        		<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+        	</div>
+        	       
+            <div style="text-align: right;font-size: 22px; padding: 5px; padding-right: 15px;">
+        		<a th:href="@{/admin/product/addProduct}"><i class="fas fa-plus-circle"> Add Product </i></a>
+        	</div>
+            
+            
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">S.N</th>
+                    <th scope="col">Image</th>
+					<th scope="col">Product_Name</th>
+					<th scope="col">Category</th>
+					<th scope="col">Price</th>
+					<th scope="col">Weight</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="p : ${products}">
+                    <th th:text="${p.pId}"></th>
+                    <th > <img src="" height="70px" width="70px" th:src="@{'/image/' + ${p.productImage}}" /></th>
+                    <th th:text="${p.name}"></th>
+                    <th th:text="${p.Category.name}"></th>
+                    <th th:text="${p.price}"></th>
+                    <td th:text="${p.weight} + ' Pounds'"></td>
+                    <td> <a th:href="@{/admin/product/update/{pId}(pId=${p.pId})}"><i class="fas fa-edit">Edit</i></a> 
+                    	 <a th:href="@{/admin/product/delete/{pId}(pId=${p.pId})}"><i style="padding-left: 3px; color: #c70411;" class="far fa-trash-alt"> Delete</i></a></td>
+                  </tr>
+                </tbody>
+              </table>
+             
+        </section>    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

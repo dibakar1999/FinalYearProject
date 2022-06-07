@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="adminBase::layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+	<section style="width: 100%;">
+
+
+		<!-- Displaying alert message of add contact page -->
+		<div th:if="${session.message}" class="" Style="width: 100%;">
+			<div th:classappend="${'alert-'+session.message.type}" class="alert"
+				role="alert">
+				<span th:text="${session.message.content}"></span>
+			</div>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
+
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-4" style="text-align: center;">Add Product</h1>
+				<p class="lead" style="text-align: center;">Add products products from here.</p>
+			</div>
+		</div>
+		
+		
+		<form th:action="@{/admin/product/addProduct}" method="post" th:object="${productDTO}" enctype="multipart/form-data">
+			
+			<div class="form-group" style="display: flex;">
+			
+				<div style="width:50%; padding-left: 20px; padding-right:20px;">
+					
+					<input type="hidden" name="pId" th:field="*{pId}"></input>
+					
+					<div style="padding-bottom: 10px;">
+						<label for="name">Product name</label>
+						<input type="text" name="name" th:field="*{name}" placeholder="Enter Product Name"  class="form-control"/>
+					</div>
+					<div style="padding-bottom: 10px;">
+						<label for="">Select Category</label>
+						<select class="form-control" th:field="*{category_id}" name="category" id="category">
+							<option th:each="category : ${categories}"
+									th:value="${category.cId}"
+									th:text="${category.name}">
+						</select>
+					</div>
+					<div style="padding-bottom: 10px;">
+						<label for="">Price</label>
+						<input type="number" name="price" th:field="*{price}" placeholder="Enter Product Price" class="form-control"/>
+					</div>
+					<div style="padding-bottom: 10px;">
+						<label for="">Weight</label>
+						<input type="number" name="weight"  th:field="*{weight}" placeholder="Enter Product Weight" class="form-control"/>
+					</div>
+					<div style="padding-bottom: 20px;">
+						<label for="">Description</label>
+						<textarea name="description" th:field="*{description}" id="" cols="30" rows="10" placeholder="Enter Short Product Description" class="form-control"></textarea>
+					</div>
+				</div>
+
+
+				<div style=" margin-left: 20px;">
+
+					<div class="form-group">
+						<label for="exampleFormControlFile1">Choose Image</label>
+						 <input
+							type="file" class="form-control-file"
+							id="exampleFormControlFile1"
+							value="Choose Photo"
+							name="pImage">
+							
+					</div>
+					<div>	
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary" style="padding-left: 30px; padding-right:30px;">Save</button>
+					</div>
+				</div>
+			</div>
+		</form>
+		
+		
+		
+
+	</section>
+
+
+
+	<!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

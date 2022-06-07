@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="adminBase::layout(~{::section})">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <section style="width: 100%; ">
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container">
+				<h1 class="display-4" style="text-align: center;">Welcome To Admin</h1>
+				<p class="lead" style="text-align: center;">Admin have all the rights to control pages like Add, Edit, Delete, etc.</p>
+			</div>
+		</div>
+
+		<div class="container" style="display: flex; text-align: center;  ">
+			<div style="background: #9dbbe3; padding: 35px; margin-left: 10px; border-radius: 15px;">
+				<h2>Categories</h2>
+				<p>Manage Categories here</p>
+				<a th:href="@{/admin/categories}" class="btn btn-primary">Manage</a>
+			</div>
+			<div style="background: #9dbbe3; padding: 35px; margin-left: 10px; border-radius: 15px;">
+				<h2>Products</h2>
+				<p>Manage Products here</p>
+				<a th:href="@{/admin/products}" class="btn btn-primary">Manage</a>
+			</div>
+			<div style="background: #9dbbe3; padding: 35px; margin-left: 10px; border-radius: 15px;">
+				<h2>Ingredients</h2>
+				<p>Manage Ingredients here</p>
+				<a th:href="@{/admin/ingredient/0}" class="btn btn-primary">Manage</a>
+			</div>
+			<div style="background: #9dbbe3; padding: 35px; margin-left: 10px; border-radius: 15px;">
+				<h2>Orders</h2>
+				<p>Manage Orders here</p>
+				<a th:href="@{/admin/orders/0}" class="btn btn-primary">Manage</a>
+			</div>
+
+		</div>
+
+
+
+
+
+
+
+
+	</section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>

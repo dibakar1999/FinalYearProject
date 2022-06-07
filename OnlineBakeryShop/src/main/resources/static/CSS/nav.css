@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat',sans-serif;
+}
+nav{
+  background: #204066;
+  padding: 5px 20px;
+}
+nav ul{
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+nav ul li{
+  padding: 5px 0;
+  cursor: pointer;
+}
+nav ul li.items{
+  position: relative;
+  width: auto;
+  margin: 0 16px;
+  text-align: center;
+  order: 3;
+}
+nav ul li.items:after{
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 5px;
+  height: 2px;
+  width: 100%;
+  background: #33ffff;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
+nav ul li.items:hover:after{
+  opacity: 1;
+  bottom: 8px;
+}
+nav ul li.logo{
+  flex: 1;
+  color: white;
+  font-size: 23px;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+nav ul li a{
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: .4s;
+}
+nav ul li:hover a{
+  color: cyan;
+}
+nav ul li i{
+  font-size: 23px;
+}
+nav ul li.btn{
+  display: none;
+}
+nav ul li.btn.hide i:before{
+  content: '\f00d';
+}
+@media all and (max-width: 900px){
+  nav{
+    padding: 5px 30px;
+  }
+  nav ul li.items{
+    width: 100%;
+    display: none;
+  }
+  nav ul li.items.show{
+    display: block;
+  }
+  nav ul li.btn{
+    display: block;
+  }
+  nav ul li.items:hover{
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px #33ffff,
+                inset 0 0 10px #66ffff;
+  }
+  nav ul li.items:hover:after{
+    opacity: 0;
+  }
+}
+
+
+/*Sidebar section   */
+
+.siderbar{
+    display: flex;
+    width: 100%;
+    height: 120vh; 
+}
+.siderbar .leftContainer{
+    width: 15%;
+    background-color: #1d1c1c;
+}
+.siderbar .leftContainer a{
+    text-decoration: none;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    display: list-item;
+    padding-top: 20px;
+    padding-left: 15px;
+   
+}
+.siderbar .leftContainer a:hover{
+    color: #3843a8;
+    transition: 0.5s;
+    letter-spacing: 4px;
+    text-transform: capitalize;
+}
+.siderbar .rightContainer{
+  width: 85%;
+}
+
+.lmain{
+  height: 100vh;
+  padding: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  color: white;
+  padding: 10px;
+  display: flex;
+  background-color: rgb(128, 200, 233);
+  background-image: url('/image/b1.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.lmain .leftCon{
+  width: 50%;
+  padding-top: 10px;
+  text-align: center;
+  font-family: Georgia, serif;
+  font-size: 48px;
+  font-weight: 900;
+}
+.lmain .rightCon{
+  width: 50%;
+}
